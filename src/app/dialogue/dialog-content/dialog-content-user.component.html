@@ -1,0 +1,90 @@
+<div class="container">
+
+    <mat-divider></mat-divider>
+
+    <div class="bodyread" *ngIf="!isEditing">
+        <div class="title">
+          <h1 mat-dialog-title>User Info</h1>
+        </div>
+        <mat-divider></mat-divider>
+        <div mat-dialog-content>
+          <p><span style="color: #ff4081; text-decoration: underline;">ID:</span> {{ ID }}</p>
+          <p><span style="color: #ff4081; text-decoration: underline;">Role:</span> {{ Role }}</p>
+          <p><span style="color: #ff4081; text-decoration: underline;">First Name:</span> {{ firstName }}</p>
+          <p><span style="color: #ff4081; text-decoration: underline;">Last Name:</span> {{ lastName }}</p>
+          <p><span style="color: #ff4081; text-decoration: underline;">Email:</span> {{ email }}</p>
+          <p><span style="color: #ff4081; text-decoration: underline;">User Name:</span> {{ username }}</p>
+          <p><span style="color: #ff4081; text-decoration: underline;">Password:</span> {{ password }}</p>
+          <p><span style="color: #ff4081; text-decoration: underline;">Street Address:</span> {{ streetAddress }}</p>
+          <p><span style="color: #ff4081; text-decoration: underline;">City:</span> {{ city }}</p>
+          <p><span style="color: #ff4081; text-decoration: underline;">Zip Code:</span> {{ zipCode }}</p>
+          <!-- Add other properties as needed -->
+        </div>
+      </div>
+
+      <div class="title">
+        <h1 mat-dialog-title *ngIf="isEditing && !isNew ">Edit User Information</h1>
+        <h1 mat-dialog-title *ngIf="isEditing && isNew ">Create a User</h1>
+    </div>
+    <mat-divider></mat-divider>
+      <div class="bodyedit" *ngIf="isEditing">
+        <div mat-dialog-content class="form-container">
+          <!-- Use form controls for editable properties -->
+          <form [formGroup]="editForm">
+            <div class="form-row">
+              <mat-form-field class="form-field">
+                <label>First Name</label>
+                <input matInput formControlName="firstName" placeholder="First Name" />
+              </mat-form-field>
+              <mat-form-field class="form-field">
+                <label>Last Name</label>
+                <input matInput formControlName="lastName" placeholder="Last Name" />
+              </mat-form-field>
+            </div>
+            <div class="form-row">
+              <mat-form-field class="form-field">
+                <label>Email</label>
+                <input matInput formControlName="email" placeholder="Email" />
+              </mat-form-field>
+              <mat-form-field class="form-field">
+                <label>User Name</label>
+                <input matInput formControlName="username" placeholder="User Name" />
+              </mat-form-field>
+            </div>
+            <div class="form-row">
+              <mat-form-field class="form-field">
+                <label>Password</label>
+                <input matInput formControlName="password" placeholder="Password" />
+              </mat-form-field>
+              <mat-form-field class="form-field">
+                <label>Street Address</label>
+                <input matInput formControlName="streetAddress" placeholder="Street Address" />
+              </mat-form-field>
+            </div>
+            <div class="form-row">
+              <mat-form-field class="form-field">
+                <label>City</label>
+                <input matInput formControlName="city" placeholder="City" />
+              </mat-form-field>
+              <mat-form-field class="form-field">
+                <label>Zip Code</label>
+                <input matInput formControlName="zipCode" placeholder="Zip Code" />
+              </mat-form-field>
+            </div>
+            <!-- Add other input fields as needed -->
+          </form>
+        </div>
+      </div>
+      
+    <mat-divider></mat-divider>
+    <div class="footer">
+        <button mat-button (click)="onGoBack()">Back</button>
+        <button mat-button (click)="onEdit($event)" *ngIf="!isEditing">Edit</button>
+        <button mat-button (click)="onReset()" *ngIf="isEditing && isDirty">Reset</button>
+        <button mat-button (click)="onDelete()" color="accent" *ngIf="!isEditing">Delete</button>
+        <button mat-button (click)="onSave()" *ngIf="isEditing">Save Changes</button>
+    </div>
+
+    <div mat-dialog-actions>
+        <!-- Any actions or buttons you want to add can go here -->
+    </div>
