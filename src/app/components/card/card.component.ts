@@ -16,6 +16,7 @@ interface FragranceImages {
 })
 
 export class CardComponent {
+  @Input() id: string = '';
   @Input() title: string = '';
   @Input() weight: string = '';
   @Input() description: string = '';
@@ -52,6 +53,7 @@ export class CardComponent {
     this.router.navigate(['/store/detail'], {
       state: {
         cardData: {
+          id:this.id,
           title: this.title,
           weight: this.weight,
           description: this.description,

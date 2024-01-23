@@ -38,18 +38,17 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     try {
       this.curUser = this.userService.getUserName();
-      console.log('User for nav service: ', this.curUser);
       this.getUserCart();
       // Subscribe to changes in cartItems$
       this.cartItemsSubscription = this.cartService.cartItems$.subscribe((cartItems) => {
         // Update your view logic here based on the new cartItems
-        console.log('Cart Items Updated:', cartItems);
       });
     }
     catch (ex) {
       console.log(ex);
     }
   }
+  
 
   getCartItemCount(): number {
     const cartItems = this.cartService.getCartItems();
@@ -63,12 +62,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
         // Assuming 'response' has properties 'Cart' and 'CartItems'
         const userCart = response.Cart;
         const cartItems = response.Cart?.CartItems || [];
-
         // Update your service to store the cart and cart items
         this.cartService.setUserCart(userCart);
-        console.log('Cart registered: ', userCart)
+
         this.cartService.setCartItems(response.Cart?.CartItems || []);
-        console.log('Cart Items registered: ', cartItems)
+
 
       },
       (error) => {

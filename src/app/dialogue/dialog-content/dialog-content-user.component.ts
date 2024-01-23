@@ -164,7 +164,7 @@ export class DialogContentUserComponent {
         if (this.isNew) {
           // Logic for creating a record...
           let mParams = {
-            
+
             firstName: firstNameVal,
             lastName: lastNameVal,
             streetAddress: streetAddressVal,
@@ -226,32 +226,9 @@ export class DialogContentUserComponent {
             password: passwordVal,
             Role: this.Role,
             Cart: {
-              ID: 0, // Replace with the actual Cart ID if available
               UserID: id, // Assuming UserID is the same as the user's ID
-              User: {
-                // Include properties for the User field
-                ID: id,
-                Role: this.Role,
-                city: cityVal,
-                email: emailVal,
-                firstName: firstNameVal,
-                lastName: lastNameVal,
-                password: passwordVal,
-                streetAddress: streetAddressVal,
-                username: usernameVal,
-                zipCode: zipCodeVal,
-              },
-              CartItems: [
-                // Include CartItems if needed
-              ]
             }
           };
-          
-          // ... Other logic for the PUT request
-          
-          
-          // ... Other logic for the PUT request
-          
 
           console.log('Update values: ', mParams);
           this.dataService.updateUserData(mParams).subscribe(

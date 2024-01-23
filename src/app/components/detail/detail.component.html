@@ -61,14 +61,12 @@
                     <p class="lead w-100" style="font-size: 1rem;">{{descriptionLong}}</p>
                     <div class="flex justify-content-start">
                         <!-- Quantity input -->
-                        <input class="form-control text-center me-3 mb-2" id="inputQuantity" type="num"
-                            [(ngModel)]="quantity" style="max-width: 5rem" />
+<input class="form-control text-center me-3 mb-2" id="inputQuantity" type="number" [(ngModel)]="quantity" style="max-width: 5rem" />
 
-                        <!-- Add to cart button -->
-                        <button class="btn btn-outline-dark flex-shrink-0 ms-auto" type="button" (click)="addToCart()">
-                            <i class="bi-cart-fill me-1"></i>
-                            Add to cart
-                        </button>
+<button class="btn btn-outline-dark flex-shrink-0 ms-auto" type="button" (click)="addToCart()">
+    <i class="bi-cart-fill me-1"></i>
+    Add to cart
+  </button>
                     </div>
                     <!--Ad-->
                     <figure class="flex justify-content-left align-items-center px-4 mt-5"

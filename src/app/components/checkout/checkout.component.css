@@ -364,7 +364,14 @@ h1,
 .h1 {
     font-size: calc(1.375rem + 1.5vw);
 }
-
+/* Add this to your styles.css or relevant stylesheet */
+.delete-icon {
+    cursor: pointer; /* Change cursor on hover to indicate interactivity */
+  }
+  
+  .delete-icon:hover {
+    color: red; /* Change color on hover */
+  }
 @media (min-width: 1200px) {
 
     h1,

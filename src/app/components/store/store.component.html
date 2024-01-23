@@ -66,7 +66,7 @@
                     <section>
                         <div class="row align-items-center">
                             <div *ngFor="let card of members" class="col-sm-4 mb-3">
-                                <app-card [title]="card.Title" [weight]="card.Weight" [description]="card.Description"
+                                <app-card [id]="card.ID"[title]="card.Title" [weight]="card.Weight" [description]="card.Description"
                                     [price]="card.Price" [imageUrl]="card.ImageUrl" [prodFrag]="card.ProdFrag"
                                     [prodStatus]="card.ProdStatus" [descriptionLong]="card.DescriptionLong"
                                     [inStock]="card.InStock" [averageRating]="card.AverageRating"

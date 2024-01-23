@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CardComponent } from '../card/card.component';
 import { CartService } from '../../services/cartservice.service';
 import {FormsModule} from '@angular/forms';
+import { Router } from '@angular/router';
 
 interface FragranceImages {
   [key: string]: string;
@@ -35,8 +36,9 @@ export interface CartItem {
 
 export class DetailComponent implements OnInit {
 
-  constructor(private cartService: CartService) { } // constructor for cart service...
+  constructor(private cartService: CartService, private router: Router) { } // constructor for cart service...
 
+  id = '';
   title = '';
   weight = '';
   description = '';
@@ -57,31 +59,29 @@ export class DetailComponent implements OnInit {
   ngOnInit(): void {
     this.setDetailDataFromState();
   }
-  // Inside your DetailComponent or wherever you handle the add to cart action
   addToCart(): void {
-    const cartItem: CartItem = {
-      title: this.title,
-      weight: this.weight,
-      description: this.description,
-      price: this.price,
-      imageUrl: this.imageUrl,
-      prodFrag: this.prodFrag,
-      prodStatus: this.prodStatus,
-      descriptionLong: this.descriptionLong,
-      inStock: this.inStock,
-      averageRating: this.averageRating,
-      imageUrlDetail: this.imageUrlDetail,
-      quantity: this.quantity,
-    };
-    console.log('Added item to cart: ', cartItem);
-    //this.cartService.addToCart(cartItem);
-    // Optionally, you can update the navbar cart icon here
+    this.cartService.addToCart(this.id, this.quantity).subscribe(
+      (response) => {
+        // Handle success
+        console.log('Item added to cart:', response);
+        // You might want to show a success message or update UI accordingly
+        // Navigate to the current route to trigger a reload
+        location.reload();
+   
+      },
+      (error) => {
+        // Handle error
+        console.error('Error adding item to cart:', error);
+        // You might want to show an error message to the user
+      }
+    );
   }
 
   private setDetailDataFromState(): void {
     const cardData = history.state.cardData;
 
     if (cardData) {
+      this.id = cardData.id;
       this.title = cardData.title;
       this.weight = cardData.weight;
       this.description = cardData.description;
