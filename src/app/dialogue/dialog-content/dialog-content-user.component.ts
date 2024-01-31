@@ -225,9 +225,7 @@ export class DialogContentUserComponent {
             username: usernameVal,
             password: passwordVal,
             Role: this.Role,
-            Cart: {
-              UserID: id, // Assuming UserID is the same as the user's ID
-            }
+           
           };
 
           console.log('Update values: ', mParams);
